@@ -98,7 +98,7 @@ function request(data, callback) {
     xhr.send(request_serialize(data));
     xhr.onreadystatechange = () => {
         if (xhr.readyState !== 4) return;
-        if (xhr.status === 200) callback(JSON.parse(xhr.responseText));
+        if (xhr.status === 200) {/* console.warn(xhr.responseText);; */callback(JSON.parse(xhr.responseText));}
         xhr = null;
     }
 }

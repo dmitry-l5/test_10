@@ -2,6 +2,17 @@
 
 // COMMON
 
+function dd(...$args){
+    foreach($args as $arg){
+        // $type = gettype($arg);
+        // echo($type);
+        echo('<pre><code>');
+        var_dump(($arg));
+        echo('</code></pre>');
+    }
+    die;
+}
+
 function init_classes() {
     spl_autoload_register(function ($class_name) {
         include './includes/core/class_'.strtolower($class_name).'.php';

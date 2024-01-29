@@ -124,6 +124,79 @@ let common = {
         });
     },
 
+    // user
+    user_delete_window:(user_id, e)=>{
+        cancel_event(e);
+        common.menu_popup_hide_all('all');
+        // vars
+        let data = {
+            user_id: user_id,
+            offset: global.offset
+        };
+        console.warn(data);
+        let location = {dpt: 'user', act: 'delete_window'};
+        // call
+        request({location: location, data: data}, (result) => {
+            common.modal_show(400, result.html);
+        });
+
+    },
+    user_delete:(user_id, e)=>{
+        console.warn("USER_ID = " + user_id);
+        // vars
+        let data = {
+            user_id: user_id,
+            offset: global.offset
+        };
+        let location = {dpt: 'user', act: 'delete_user'};
+        // call
+        request({location: location, data: data}, (result) => {
+            common.modal_hide();
+            html('table', result.html);
+        });
+
+    },
+    user_edit_window: (user_id, e) => {
+        // actions
+        cancel_event(e);
+        common.menu_popup_hide_all('all');
+        // vars
+        let data = {user_id: user_id};
+        let location = {dpt: 'user', act: 'edit_window'};
+        // call
+
+        request({location: location, data: data}, (result) => {
+            common.modal_show(400, result.html);
+        });
+    },
+    user_edit_update: (user_id = 0) => {
+        // vars
+        let data = {
+            user_id: user_id,
+            first_name: gv('first_name'),
+            last_name: gv('last_name'),
+            phone: gv('phone'),
+            email: gv('email'),
+            plots: gv('plots'),
+            offset: global.offset
+        };
+        console.warn('data = ');
+        console.warn(data);
+        let location = {dpt: 'user', act: 'edit_update'};
+        // call
+        request({location: location, data: data}, (result) => {
+            let inputs = ['first_name', 'last_name', 'phone', 'email'];
+            inputs.forEach((item)=>{ document.getElementById(item).classList.remove('error')})
+            console.error(result.input_err);
+            if(result.input_err !== undefined){
+                result.input_err.forEach((item)=>{ document.getElementById(item).classList.add('error')});
+                return;
+            }
+            common.modal_hide();
+            html('table', result.html);
+        });
+    },
+    
     // plots
 
     plot_edit_window: (plot_id, e) => {

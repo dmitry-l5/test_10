@@ -2,9 +2,9 @@
 
 // db
 const DB_HOST = '127.0.0.1';
-const DB_USER = 'aeon_2';
-const DB_PASS = 'aeon_2';
-const DB_NAME = 'aeon_2';
+const DB_USER = 'root';
+const DB_PASS = '';
+const DB_NAME = 'test';
 // common
 const SITE_SCHEME = 'http';
 const DEFAULT_TIMEZONE = '240';

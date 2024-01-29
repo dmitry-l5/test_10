@@ -1,0 +1,19 @@
+<div class="modal_head">
+    <i class="icon_close" onclick="common.modal_hide()"></i>
+</div>
+<div class="modal_body">
+    <div class="input_group_modal">
+        <input type="hidden" id="user_id" value="{$user.user_id}">
+    </div>
+    <div class="input_group_modal">
+        <div>Are you sure. delete the user "{$user.first_name}" "{$user.last_name}"?</div>
+    </div>
+    <div class="modal_controls">
+        <div>
+            <div class="btn_modal danger" onclick="common.user_delete({$user.user_id});">Delete</div>
+        </div>
+        <div>
+            <div class="btn_modal light" onclick="common.modal_hide();">Cancel</div>
+        </div>
+    </div>
+</div>
